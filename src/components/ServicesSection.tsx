@@ -1,33 +1,33 @@
-import Icon from '@/components/ui/icon';
+import { Zap, Home, Lightbulb, Settings, Shield, Plug } from 'lucide-react';
 
 const services = [
   {
-    icon: 'Zap',
+    icon: Zap,
     title: 'Монтаж проводки',
     description: 'Прокладка электропроводки в квартирах, домах и офисах. Скрытая и открытая проводка по всем стандартам безопасности.'
   },
   {
-    icon: 'Home',
+    icon: Home,
     title: 'Установка щитков',
     description: 'Монтаж и замена электрощитов, автоматических выключателей, УЗО. Правильная схема защиты вашего дома.'
   },
   {
-    icon: 'Lightbulb',
+    icon: Lightbulb,
     title: 'Освещение',
     description: 'Установка люстр, бра, светильников. Монтаж светодиодной подсветки и систем умного освещения.'
   },
   {
-    icon: 'Settings',
+    icon: Settings,
     title: 'Ремонт и обслуживание',
     description: 'Диагностика и устранение неисправностей. Замена розеток, выключателей, ремонт электропроводки.'
   },
   {
-    icon: 'Shield',
+    icon: Shield,
     title: 'Заземление',
     description: 'Монтаж систем заземления и молниезащиты. Обеспечение безопасности электросети вашего объекта.'
   },
   {
-    icon: 'Plug',
+    icon: Plug,
     title: 'Подключение техники',
     description: 'Профессиональное подключение бытовой техники, электроплит, водонагревателей, кондиционеров.'
   }
@@ -47,22 +47,25 @@ export default function ServicesSection() {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="group rounded-2xl bg-white p-8 shadow-sm transition-all hover:shadow-xl"
-            >
-              <div className="mb-6 inline-flex rounded-xl bg-zinc-900 p-4 transition-transform group-hover:scale-110">
-                <Icon name={service.icon} className="text-white" size={32} />
+          {services.map((service) => {
+            const IconComponent = service.icon;
+            return (
+              <div
+                key={service.title}
+                className="group rounded-2xl bg-white p-8 shadow-sm transition-all hover:shadow-xl"
+              >
+                <div className="mb-6 inline-flex rounded-xl bg-zinc-900 p-4 transition-transform group-hover:scale-110">
+                  <IconComponent className="text-white" size={32} />
+                </div>
+                <h3 className="mb-3 text-2xl font-light text-zinc-900">
+                  {service.title}
+                </h3>
+                <p className="text-zinc-600">
+                  {service.description}
+                </p>
               </div>
-              <h3 className="mb-3 text-2xl font-light text-zinc-900">
-                {service.title}
-              </h3>
-              <p className="text-zinc-600">
-                {service.description}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="mt-16 text-center">
